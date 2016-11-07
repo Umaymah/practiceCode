@@ -9,16 +9,28 @@
 public class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int tmp;
+        int tmp1;
+        int tmp2;
         ListNode ans = new ListNode(0);
         tmp = l1.val + l2.val;
         ans.val = tmp % 10;
         ListNode first = ans;
-        while (l1.next != null && l2.next != null) {
+        while (l1.next != null || l2.next != null) {
             ans.next = new ListNode(0);
             ans = ans.next;
-            l1 = l1.next;
-            l2 = l2.next;
-            tmp = ((tmp / 10) + l1.val + l2.val);
+            if(l1.next != null) { 
+                l1 = l1.next;
+                tmp1 = l1.val;
+            } else {
+                tmp1 = 0;
+            }
+            if(l2.next != null) { 
+                l2 = l2.next;
+                tmp2 = l2.val;
+            } else {
+                tmp2 = 0;
+            }
+            tmp = ((tmp / 10) + tmp1 + tmp2);
             ans.val = tmp % 10; 
         }
         if((tmp / 10) != 0) {
