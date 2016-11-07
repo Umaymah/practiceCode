@@ -1,21 +1,20 @@
+
 public class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int[] ans = new int[2];
         int i = 0;
         int j = 0;
         int tmp = 0;
         int max = nums.length;
-        while(i < max && i != -1) {
-            ans[0] = i;
+        while(i < max) {
             for(j = i + 1; j < max; j++) {
                 tmp = nums[i] + nums[j]; 
                 if (tmp == target) {
-                    ans[1] = j;
-                    i = -1;
+                    int[] ans = {i, j};
+                    return ans;
                 }
             }
-            if (i != -1) {i++;}
+            i++;
         } 
-        return ans;
+        throw new IllegalArgumentException("No two values are sums");
     }
 }
